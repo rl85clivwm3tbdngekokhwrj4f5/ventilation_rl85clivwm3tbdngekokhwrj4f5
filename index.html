@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="robots" content="noindex, nofollow">
+		<title>CO2</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+		<script type="text/javascript" src="code.js"></script>
+
+		<fieldset>
+    			<legend>Select a CO2 method</legend>
+				<div>
+					<input type="radio" id="decay" name="method" value="decay" checked onclick="toggle_method(this)">
+					<label for="decay">Post occupancy CO2 decay</label>
+				</div>
+
+				<div>
+					<input type="radio" id="steady" name="method" value="steady" onclick="toggle_method(this)">
+					<label for="steady">Steady state CO2</label>
+				</div>
+
+				<div>
+					<input type="radio" id="build_up" name="method" value="build_up" onclick="toggle_method(this)">
+					<label for="build_up">CO2 build up</label>
+				</div>
+		</fieldset>
+
+		<br>
+
+		<div id="decay_content" class="page_content page_content_active">
+			<label for="decay_co2_external">External CO2 level (ppm):</label>
+			<input type="text" id="decay_co2_external" >
+			<br><br>
+			<label for="decay_co2_count">Input number of data points:</label>
+			<input type="text" id="decay_co2_count" >
+			<button type="button"  onclick="add_input('decay_content','2','decay_co2_count','decay_co2_compute','decay_co2_dynamic')">Proceed</button>
+			<br><br>
+			<button type="button" id="decay_co2_compute" onclick="decay_co2_solve()">Compute</button>
+		</div>
+
+		<div id="steady_content" class="page_content">
+			<label for="steady_co2_external">External CO2 level (ppm):</label>
+			<input type="text" id="steady_co2_external" >
+			<br><br>
+			<label for="steady_co2_steady">Steady CO2 level (ppm):</label>
+			<input type="text" id="steady_co2_steady" >
+			<br><br>
+			<label for="steady_co2_gen">CO2 generation rate:</label>
+			<input type="text" id="steady_co2_gen" >
+                        <input type="radio" id="steady_co2_unit_cfm" name="unit" value="cfm" checked>
+                        <label for="steady_co2_unit_cfm">cfm</label>
+                        <input type="radio" id="steady_co2_unit_Ls" name="unit" value="Ls">
+                        <label for="steady_co2_unit_Ls">L/s</label>
+			<br><br>
+			<button type="button" id="steady_co2_compute" onclick="steady_co2_solve()">Compute</button>
+		</div>
+
+		<div id="rise_content" class="page_content">
+			<label for="rise_co2_count">Input number of data points:</label>
+			<input type="text" id="rise_co2_count" >
+			<button type="button"  onclick="add_input('rise_content','3','rise_co2_count','rise_co2_compute','rise_co2_dynamic')">Proceed</button>
+			<br><br>
+			<button type="button" id="rise_co2_compute" onclick="rise_co2_solve()">Compute</button>
+		</div>
+			
+	</body>
+</html>

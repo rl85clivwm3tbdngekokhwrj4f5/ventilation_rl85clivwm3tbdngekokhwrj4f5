@@ -1,0 +1,9 @@
+.page_content
+{
+	display: none;
+}
+
+.page_content_active
+{
+	display: block;
+}
